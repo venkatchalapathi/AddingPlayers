@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddActivity">
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:onClick="addImage"
+        android:background="@drawable/cirlce"
+        android:src="@drawable/ic_account_circle_black_24dp"/>
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp">
+       <Button
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:text="Cancel"
+           android:onClick="cacelBtn"
+           android:textColor="#fff"
+           android:background="@drawable/rectangle"
+           android:padding="10dp"
+
+           android:layout_height="wrap_content" />
+       <Button
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:padding="10dp"
+           android:text="Save"
+           android:onClick="saveData"
+           android:textColor="#fff"
+           android:background="@drawable/rectangle"
+           android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
