@@ -1,9 +1,6 @@
 package com.example.addingplayers;
 
-import android.app.Application;
-import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
-import android.os.Parcelable;
 
 import com.example.addingplayers.Models.Batting;
 import com.example.addingplayers.Models.Bowling;
@@ -11,77 +8,38 @@ import com.example.addingplayers.Models.Fielding;
 import com.example.addingplayers.Models.Player;
 import com.example.addingplayers.Models.Team;
 
-import java.util.List;
-
-public class ImageRepository {
-    private ImageDao mMealDao;
-    private LiveData<List<ImageInfo>> mAllMeals;
-    private LiveData<List<Team>> allTeams;
-    private LiveData<List<Team>> selectedTeam;
-    private LiveData<List<Player>> allPlayers;
-
-    public ImageRepository(Application application) {
-        ImageDatabase database = ImageDatabase.getDatabase(application);
-        mMealDao = database.imageDao();
-        mAllMeals = mMealDao.getAllFavs();
-        allTeams = mMealDao.getAllTeams();
-    }
-
-    public LiveData<List<ImageInfo>> getmAllMeals() {
-        return mAllMeals;
-    }
-
-    public LiveData<List<Team>> getAllTeams() {
-        return mMealDao.getAllTeams();
-    }
-
-    public LiveData<List<Team>> getSelectedTeam(int id) {
-        return mMealDao.getSelectedTeam(id);
-    }
-
-    public LiveData<List<Player>> getAllPlayers(int id) {
-        return mMealDao.getPlayers(id);
-    }
-
-    void insertTeam(Team word) {
-        new insertAsyncTask(mMealDao).execute(word);
-    }
-
-    void insertPlayer(Player player) {
-        new insertPlayerTask(mMealDao).execute(player);
-    }
-
-    void updateBatting(Batting batting) {
-        new updateBattingTask(mMealDao).execute(batting);
-    }
-
-    void updateBowling(Bowling bowling) {
-        new updateBowlingTask(mMealDao).execute(bowling);
-    }
-
-    void updateFielding(Fielding fielding) {
-        new updateFieldingTask(mMealDao).execute(fielding);
+public class DBTasks {
+    static void insertTeam(Team word, ImageDao imageDao) {
 
     }
 
-    void deleteTeam(Team word) {
-        new deleteAsyncTask(mMealDao).execute(word);
+     static void  insertPlayer(Player player,ImageDao imageDao) {
 
     }
 
-    void deletePlayer(Player player) {
-        new deletePlayerTask(mMealDao).execute(player);
+     static void  updateBatting(Batting batting,ImageDao imageDao) {
 
     }
 
-    void updatePlayer(Player player) {
-        new updatePlayerTask(mMealDao).execute(player);
+      static void  updateBowling(Bowling bowling,ImageDao imageDao) {
+        }
+
+      static void  updateFielding(Fielding fielding,ImageDao imageDao) {
+    }
+
+      static void  deleteTeam(Team word,ImageDao imageDao) {
+    }
+
+      static void  deletePlayer(Player player,ImageDao imageDao) {
+    }
+
+    static void  updatePlayer(Player player,ImageDao imageDao) {
+    }
+
+    static void updateTeam(Team targetUser,ImageDao imageDao) {
 
     }
 
-    public void updateTeam(Team targetUser) {
-        new updateAsyncTask(mMealDao).execute(targetUser);
-    }
     private static class insertAsyncTask extends AsyncTask<Team, Void, Void> {
 
         private ImageDao mAsyncTaskDao;
@@ -107,8 +65,6 @@ public class ImageRepository {
 
         @Override
         protected Void doInBackground(final Player... params) {
-            /*daredao().insertAll(new Team("dare_title1", params[0].getPlayer_name()));
-            stepdao().insertAll(steps[0]);*/
             mAsyncTaskDao.insertNewPlayer(params[0]);
             return null;
         }
@@ -218,4 +174,5 @@ public class ImageRepository {
             return null;
         }
     }
+
 }

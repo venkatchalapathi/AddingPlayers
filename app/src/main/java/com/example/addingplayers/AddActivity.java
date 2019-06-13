@@ -16,6 +16,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.addingplayers.Models.Batting;
+import com.example.addingplayers.Models.Bowling;
+import com.example.addingplayers.Models.Fielding;
+import com.example.addingplayers.Models.Player;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -31,6 +36,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddActivity extends AppCompatActivity {
@@ -41,12 +47,14 @@ public class AddActivity extends AppCompatActivity {
     ImageView imageView;
     Bitmap bitmap;
 
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
         viewModel = ViewModelProviders.of(this).get(ImageViewModel.class);
-
+        id = getIntent().getIntExtra("team_id_key",0);
+        Log.i("mylog","Team id :"+id);
         imageView = findViewById(R.id.photo);
         about_image = findViewById(R.id.name);
 
@@ -111,10 +119,14 @@ public class AddActivity extends AppCompatActivity {
 
     private void insertData(Bitmap bitmap) {
         note = about_image.getText().toString();
-        ImageInfo info = new ImageInfo();
-        info.setImage_name(note);
-        info.setImage(toByteArray(bitmap));
-        viewModel.insert(info);
+        Player info = new Player();
+        info.setPlayer_name(note);
+        info.setTeam_id(id);
+        info.setPlayer_Image(toByteArray(bitmap));
+        info.setList(new ArrayList<Batting>());
+        info.setBowlingList(new ArrayList<Bowling>());
+        info.setFieldingList(new ArrayList<Fielding>());
+        viewModel.insertNewPlayer(info);
         Toast.makeText(this, "Image Inserted.." + note, Toast.LENGTH_SHORT).show();
     }
 

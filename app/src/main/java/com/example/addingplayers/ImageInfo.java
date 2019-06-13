@@ -15,6 +15,21 @@ public class ImageInfo {
 
     private String image_name;
 
+    public ImageInfo(int id, byte[] image, String image_name) {
+        this.id = id;
+        this.image = image;
+        this.image_name = image_name;
+    }
+
+    public ImageInfo() {
+    }
+
+    public ImageInfo(ImageInfo targetUser) {
+        this.id = targetUser.id;
+        this.image_name = targetUser.image_name;
+        this.image = targetUser.image;
+    }
+
     public int getId() {
         return id;
     }
