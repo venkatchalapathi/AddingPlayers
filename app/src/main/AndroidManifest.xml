@@ -14,10 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddPlayerActivity"></activity>
-        <activity android:name=".AddActivity" />
-        <activity android:name=".ImagePickerActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.PlayerDetailsActivity"></activity>
+        <activity android:name=".Activities.AddPlayerActivity" />
+        <activity android:name=".Activities.AddActivity" />
+        <activity android:name=".Activities.ImagePickerActivity" />
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

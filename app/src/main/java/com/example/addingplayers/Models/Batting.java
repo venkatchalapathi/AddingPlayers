@@ -7,14 +7,12 @@ import android.support.annotation.NonNull;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
-@Entity(foreignKeys = @ForeignKey(entity = Player.class,
-        parentColumns = "player_id", childColumns = "batting_id",
-        onDelete = CASCADE))
+@Entity
 public class Batting {
 
-    private long batting_id;
-    @PrimaryKey
-    private long player_id;
+    @PrimaryKey(autoGenerate = true)
+    private int player_id;
+    private int batting_id;
     private int matches;
     private int innings;
     private int runs;
@@ -30,20 +28,20 @@ public class Batting {
     private int ducks;
     private int team_id;
 
-    public long getBatting_id() {
-        return batting_id;
-    }
-
-    public void setBatting_id(long batting_id) {
-        this.batting_id = batting_id;
-    }
-
-    public long getPlayer_id() {
+    public int getPlayer_id() {
         return player_id;
     }
 
-    public void setPlayer_id(long player_id) {
+    public void setPlayer_id(int player_id) {
         this.player_id = player_id;
+    }
+
+    public int getBatting_id() {
+        return batting_id;
+    }
+
+    public void setBatting_id(int batting_id) {
+        this.batting_id = batting_id;
     }
 
     public int getMatches() {

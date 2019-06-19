@@ -1,7 +1,6 @@
-package com.example.addingplayers;
+package com.example.addingplayers.Adapters;
 
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,12 +9,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.addingplayers.Activities.AddPlayerActivity;
+import com.example.addingplayers.Activities.MainActivity;
 import com.example.addingplayers.Models.Team;
+import com.example.addingplayers.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
-class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
+public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     MainActivity mainActivity;
     List<Team> teams;
 
@@ -27,7 +28,8 @@ class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     @NonNull
     @Override
     public TeamAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new ViewHolder(LayoutInflater.from(mainActivity).inflate(R.layout.team_row,viewGroup,false));
+        return new ViewHolder(LayoutInflater.from(mainActivity)
+                .inflate(R.layout.team_row,viewGroup,false));
     }
 
     @Override
@@ -57,7 +59,7 @@ class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(mainActivity,AddPlayerActivity.class);
+            Intent intent = new Intent(mainActivity, AddPlayerActivity.class);
             //intent.putParcelableArrayListExtra("players_list", (ArrayList<? extends Parcelable>) teams.get(getAdapterPosition()).getPlayersList());
             intent.putExtra("team_id",teams.get(getAdapterPosition()).getTeam_id());
             intent.putExtra("team_name",teams.get(getAdapterPosition()).getTeam_name());

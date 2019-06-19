@@ -1,4 +1,4 @@
-package com.example.addingplayers;
+package com.example.addingplayers.Converters;
 
 import android.arch.persistence.room.TypeConverter;
 

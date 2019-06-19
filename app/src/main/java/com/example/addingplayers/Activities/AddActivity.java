@@ -1,7 +1,6 @@
-package com.example.addingplayers;
+package com.example.addingplayers.Activities;
 
 import android.Manifest;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
@@ -15,7 +14,6 @@ import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,10 +22,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.addingplayers.Models.Batting;
-import com.example.addingplayers.Models.Bowling;
-import com.example.addingplayers.Models.Fielding;
+import com.example.addingplayers.Database.ImageViewModel;
 import com.example.addingplayers.Models.Player;
+import com.example.addingplayers.R;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -36,7 +33,6 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AddActivity extends AppCompatActivity {
@@ -123,10 +119,7 @@ public class AddActivity extends AppCompatActivity {
         info.setPlayer_name(note);
         info.setTeam_id(id);
         info.setPlayer_Image(toByteArray(bitmap));
-        info.setList(new ArrayList<Batting>());
-        info.setBowlingList(new ArrayList<Bowling>());
-        info.setFieldingList(new ArrayList<Fielding>());
-        viewModel.insertNewPlayer(info);
+       viewModel.insertNewPlayer(info);
         Toast.makeText(this, "Image Inserted.." + note, Toast.LENGTH_SHORT).show();
     }
 

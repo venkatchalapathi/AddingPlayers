@@ -7,41 +7,29 @@ import android.support.annotation.NonNull;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
-@Entity(foreignKeys = @ForeignKey(entity = Player.class,
-        parentColumns = "player_id", childColumns = "fielding_id",
-        onDelete = CASCADE))
+@Entity
 public class Fielding {
-
-    private long fielding_id;
-    private long team_id;
-    @PrimaryKey
-    private long player_id;
+    @PrimaryKey(autoGenerate = true)
+    private int fielding_id;
+    private int player_id;
     private int matches;
     private int catches;
     private int stumpings;
     private int run_outs;
 
-    public long getFielding_id() {
+    public int getFielding_id() {
         return fielding_id;
     }
 
-    public void setFielding_id(long fielding_id) {
+    public void setFielding_id(int fielding_id) {
         this.fielding_id = fielding_id;
     }
 
-    public long getTeam_id() {
-        return team_id;
-    }
-
-    public void setTeam_id(long team_id) {
-        this.team_id = team_id;
-    }
-
-    public long getPlayer_id() {
+    public int getPlayer_id() {
         return player_id;
     }
 
-    public void setPlayer_id(long player_id) {
+    public void setPlayer_id(int player_id) {
         this.player_id = player_id;
     }
 

@@ -1,4 +1,4 @@
-package com.example.addingplayers;
+package com.example.addingplayers.Database;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.addingplayers.R;
 import com.thesurix.gesturerecycler.GestureViewHolder;
 
 import org.jetbrains.annotations.NotNull;

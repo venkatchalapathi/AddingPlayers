@@ -1,4 +1,4 @@
-package com.example.addingplayers;
+package com.example.addingplayers.Database;
 
 public interface ImageItem {
 

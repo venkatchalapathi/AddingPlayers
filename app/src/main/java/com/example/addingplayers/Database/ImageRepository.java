@@ -1,15 +1,16 @@
-package com.example.addingplayers;
+package com.example.addingplayers.Database;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
-import android.os.Parcelable;
 
+import com.example.addingplayers.ImageInfo;
 import com.example.addingplayers.Models.Batting;
 import com.example.addingplayers.Models.Bowling;
 import com.example.addingplayers.Models.Fielding;
 import com.example.addingplayers.Models.Player;
 import com.example.addingplayers.Models.Team;
+import com.example.addingplayers.Models.TeamWithPlayers;
 
 import java.util.List;
 
@@ -35,11 +36,11 @@ public class ImageRepository {
         return mMealDao.getAllTeams();
     }
 
-    public LiveData<List<Team>> getSelectedTeam(int id) {
+   /* public LiveData<List<Team>> getSelectedTeam(int id) {
         return mMealDao.getSelectedTeam(id);
-    }
+    }*/
 
-    public LiveData<List<Player>> getAllPlayers(int id) {
+    public LiveData<List<TeamWithPlayers>> getAllPlayers(int id) {
         return mMealDao.getPlayers(id);
     }
 

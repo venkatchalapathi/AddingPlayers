@@ -1,4 +1,4 @@
-package com.example.addingplayers;
+package com.example.addingplayers.Activities;
 
 import android.Manifest;
 import android.app.Activity;
@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.addingplayers.R;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
