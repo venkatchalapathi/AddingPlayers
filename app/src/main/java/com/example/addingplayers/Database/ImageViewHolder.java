@@ -14,8 +14,8 @@ import com.thesurix.gesturerecycler.GestureViewHolder;
 import org.jetbrains.annotations.NotNull;
 
 public class ImageViewHolder extends RecyclerView.ViewHolder {
-    ImageView imageView,edit,drag;
-    TextView textView;
+    public ImageView imageView,edit,drag;
+    public TextView textView;
     public ImageViewHolder(@NotNull View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.imageview);

@@ -44,13 +44,14 @@ public class AddActivity extends AppCompatActivity {
     Bitmap bitmap;
 
     int id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
         viewModel = ViewModelProviders.of(this).get(ImageViewModel.class);
-        id = getIntent().getIntExtra("team_id_key",0);
-        Log.i("mylog","Team id :"+id);
+        id = getIntent().getIntExtra("team_id_key", 0);
+        Log.i("mylog", "Team id :" + id);
         imageView = findViewById(R.id.photo);
         about_image = findViewById(R.id.name);
 
@@ -119,7 +120,7 @@ public class AddActivity extends AppCompatActivity {
         info.setPlayer_name(note);
         info.setTeam_id(id);
         info.setPlayer_Image(toByteArray(bitmap));
-       viewModel.insertNewPlayer(info);
+        viewModel.insertNewPlayer(info);
         Toast.makeText(this, "Image Inserted.." + note, Toast.LENGTH_SHORT).show();
     }
 
@@ -177,11 +178,22 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public byte[] toByteArray(Bitmap bitmap) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-        bitmap.recycle();
-        return byteArray;
+        if (bitmap != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] byteArray = stream.toByteArray();
+            bitmap.recycle();
+            return byteArray;
+        } else {
+            /*Bitmap def_bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.account);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            def_bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] byteArray = stream.toByteArray();
+            def_bitmap.recycle();
+            return byteArray;*/
+            Toast.makeText(this, "No Image Selected!", Toast.LENGTH_SHORT).show();
+            return null;
+        }
     }
 
     public Bitmap toBitmap(byte[] byteArray) {

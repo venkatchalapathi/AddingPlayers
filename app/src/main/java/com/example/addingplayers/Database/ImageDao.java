@@ -59,4 +59,7 @@ public interface ImageDao {
 
     @Update
     void updatePlayer(Player param);
+
+    @Query("Select player_Image from player where player_id=:id")
+    byte[] getPlayer(int id);
 }

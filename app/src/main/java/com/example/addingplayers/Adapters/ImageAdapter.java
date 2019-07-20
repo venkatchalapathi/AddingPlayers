@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.addingplayers.Activities.AddPlayerActivity;
 import com.example.addingplayers.Activities.PlayerDetailsActivity;
 import com.example.addingplayers.Database.ImageViewHolder;
@@ -47,7 +48,10 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         ((ImageViewHolder) viewHolder).textView.setText(imageInfos.get(i).getPlayers().get(i).getPlayer_name());
         Log.i("POS-->", "Adapter " + i + ":DB " + imageInfos.get(i).getPlayers().get(i).getPlayer_id());
         Glide.with(viewHolder.itemView)
-                .load(toBitmap(imageInfos.get(i).getPlayers().get(i).getPlayer_Image())).into(((ImageViewHolder) viewHolder).imageView);
+
+                .load(toBitmap(imageInfos.get(i).getPlayers().get(i).getPlayer_Image()))
+                .apply(new RequestOptions().placeholder(R.drawable.ic_account_circle_black_24dp))
+                .into(((ImageViewHolder) viewHolder).imageView);
 
         ((ImageViewHolder) viewHolder).drag.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -63,7 +67,7 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             public void onClick(View v) {
                 Intent intent = new Intent(context, PlayerDetailsActivity.class);
                 intent.putExtra("id_key",imageInfos.get(i).getPlayers().get(i).getPlayer_id());
-                Log.i("imageLink-->",""+imageInfos.get(i).getPlayers().get(i).getPlayer_Image());
+                Log.i("imageLink-->1",""+toBitmap(imageInfos.get(i).getPlayers().get(i).getPlayer_Image()));
                 //intent.putExtra("image_key",imageInfos.get(i).getPlayers().get(i).getPlayer_Image());
                 context.startActivity(intent);
             }
@@ -71,7 +75,11 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public Bitmap toBitmap(byte[] byteArray) {
-        return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        if (byteArray!=null) {
+            return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        }else{
+            return null;
+        }
 
     }
 

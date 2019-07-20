@@ -47,4 +47,8 @@ public class ImageViewModel extends AndroidViewModel {
     public void insertNewPlayer(Player info) {
         imageRepository.insertPlayer(info);
     }
+
+    public byte[] getPlayer(int id) {
+       return imageRepository.getPlayer(id);
+    }
 }

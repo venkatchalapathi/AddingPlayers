@@ -83,6 +83,11 @@ public class ImageRepository {
     public void updateTeam(Team targetUser) {
         new updateAsyncTask(mMealDao).execute(targetUser);
     }
+
+    public byte[] getPlayer(int id) {
+        return mMealDao.getPlayer(id);
+    }
+
     private static class insertAsyncTask extends AsyncTask<Team, Void, Void> {
 
         private ImageDao mAsyncTaskDao;

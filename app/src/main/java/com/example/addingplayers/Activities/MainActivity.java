@@ -18,10 +18,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.addingplayers.Adapters.TeamAdapter;
 import com.example.addingplayers.Database.ImageViewModel;
 import com.example.addingplayers.Models.Team;
 import com.example.addingplayers.R;
-import com.example.addingplayers.TeamAdapter;
 
 import java.io.ByteArrayOutputStream;
 import java.util.List;
